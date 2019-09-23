@@ -5,7 +5,7 @@
 
 - [Korean BERT pre-trained cased (KoBERT)](#korean-bert-pre-trained-cased-kobert)
   - [Why'?'](#why)
-  - [Training Envirement](#training-envirement)
+  - [Training Environment](#training-environment)
   - [Requirements](#requirements)
   - [Using with PyTorch](#using-with-pytorch)
   - [Using with ONNX](#using-with-onnxhttpsonnxai)
@@ -22,7 +22,7 @@
 
 * 구글 [BERT base multilingual cased](https://github.com/google-research/bert/blob/master/multilingual.md)의 한국어 성능 한계
 
-#### Training Envirement
+#### Training Environment
 
 * Architecture
 
