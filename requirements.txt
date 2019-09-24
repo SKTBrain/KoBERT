@@ -1,0 +1,6 @@
+torch >= 1.1.0
+pytorch_pretrained_bert >= 0.4.0
+mxnet >= 1.4.0
+gluonnlp >= 0.6.0
+sentencepiece >= 0.1.6
+onnxruntime >= 0.3.0

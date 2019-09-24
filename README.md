@@ -7,6 +7,7 @@
   - [Why'?'](#why)
   - [Training Environment](#training-environment)
   - [Requirements](#requirements)
+- [How to install](#how-to-install)
   - [Using with PyTorch](#using-with-pytorch)
   - [Using with ONNX](#using-with-onnxhttpsonnxai)
   - [Using with MXNet-Gluon](#using-with-mxnet-gluon)
@@ -44,7 +45,6 @@ predefined_args = {
     }
 ```
 
-
 * 학습셋
 
 | 데이터  |  문장  | 단어 |
@@ -64,12 +64,22 @@ predefined_args = {
 
 #### Requirements
 
+* Python >= 3.6
 * PyTorch >= 1.1.0
 * pytorch_pretrained_bert >= 0.4.0
 * MXNet >= 1.4.0
 * gluonnlp >= 0.6.0
 * sentencepiece >= 0.1.6
 * onnxruntime >= 0.3.0
+
+### How to install
+
+```sh
+git clone https://github.com/SKTBrain/KoBERT.git
+cd KoBERT
+pip install -r requirements.txt
+pip install .
+```
 
 #### Using with PyTorch
 
@@ -170,6 +180,4 @@ Vocab(size=8002, unk="[UNK]", reserved="['[MASK]', '[SEP]', '[CLS]']")
 
 #### Contacts
 
-버트활용에 도움이 필요하시면, 이슈를 등록해 주시기 바랍니다.
-
-한국어 버트에 대한 커뮤니케이션이 필요하신분은 `gogamza@sk.com`로 연락주세요.
+버트활용에 도움이 필요하시면, [이슈](https://github.com/SKTBrain/KoBERT/issues)를 등록해 주시기 바랍니다.
