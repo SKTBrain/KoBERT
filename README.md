@@ -8,12 +8,12 @@
   - [Training Environment](#training-environment)
   - [Requirements](#requirements)
 - [How to install](#how-to-install)
-  - [Using with PyTorch](#using-with-pytorch)
-  - [Using with ONNX](#using-with-onnxhttpsonnxai)
-  - [Using with MXNet-Gluon](#using-with-mxnet-gluon)
-  - [Tokenizer](#tokenizer)
-  - [Fine-tuning Performances](#fine-tuning-performances)
-  - [Contacts](#contacts)
+- [Using with PyTorch](#using-with-pytorch)
+- [Using with ONNX](#using-with-onnxhttpsonnxai)
+- [Using with MXNet-Gluon](#using-with-mxnet-gluon)
+- [Tokenizer](#tokenizer)
+- [Fine-tuning Performances](#fine-tuning-performances)
+- [Contacts](#contacts)
 
 <!-- /code_chunk_output -->
 
@@ -81,7 +81,7 @@ pip install -r requirements.txt
 pip install .
 ```
 
-#### Using with PyTorch
+### Using with PyTorch
 
 ```python
 >>> import torch
@@ -105,7 +105,7 @@ tensor([[-0.2461,  0.2428,  0.2590,  ..., -0.4861, -0.0731,  0.0756],
 
 `model`은 디폴트로 `eval()`모드로 리턴됨, 따라서 학습 용도로 사용시 `model.train()`명령을 통해 학습 모드로 변경할 필요가 있다.
 
-#### Using with [ONNX](https://onnx.ai/)
+### Using with [ONNX](https://onnx.ai/)
 
 ```python
 >>> import onnxruntime
@@ -131,7 +131,9 @@ array([[-0.24610452,  0.24282141,  0.25895312, ..., -0.48613444,
         -0.07326943,  0.07650235]], dtype=float32)
 ```
 
-#### Using with MXNet-Gluon
+_ONNX 컨버팅은 [soeque1](https://github.com/soeque1)께서 도움을 주셨습니다._
+
+### Using with MXNet-Gluon
 
 ```python
 >>> import mxnet as mx
@@ -156,7 +158,7 @@ Vocab(size=8002, unk="[UNK]", reserved="['[MASK]', '[SEP]', '[CLS]']")
 <NDArray 3x768 @cpu(0)>
 ```
 
-#### Tokenizer
+### Tokenizer
 
 * Pretrained [SentencePiece](https://github.com/google/sentencepiece) tokenizer
 
@@ -169,7 +171,7 @@ Vocab(size=8002, unk="[UNK]", reserved="['[MASK]', '[SEP]', '[CLS]']")
 ['▁한국', '어', '▁모델', '을', '▁공유', '합니다', '.']
 ```
 
-#### Fine-tuning Performances
+### Fine-tuning Performances
 
 * [Naver Sentiment Analysis Evaluation Results](https://github.com/e9t/nsmc)
 
@@ -178,6 +180,6 @@ Vocab(size=8002, unk="[UNK]", reserved="['[MASK]', '[SEP]', '[CLS]']")
 | [BERT base multilingual cased](https://github.com/google-research/bert/blob/master/multilingual.md) |  0.875  |
 | KoBERT | **[0.901](logs/bert_naver_small_512_news_simple_20190624.txt)**|
 
-#### Contacts
+### Contacts
 
 버트활용에 도움이 필요하시면, [이슈](https://github.com/SKTBrain/KoBERT/issues)를 등록해 주시기 바랍니다.
