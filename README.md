@@ -14,6 +14,7 @@
 - [Tokenizer](#tokenizer)
 - [Fine-tuning Performances](#fine-tuning-performances)
 - [Contacts](#contacts)
+- [License](#license)
 
 <!-- /code_chunk_output -->
 
@@ -160,7 +161,7 @@ Vocab(size=8002, unk="[UNK]", reserved="['[MASK]', '[SEP]', '[CLS]']")
 
 ### Tokenizer
 
-* Pretrained [SentencePiece](https://github.com/google/sentencepiece) tokenizer
+* Pretrained [Sentencepiece](https://github.com/google/sentencepiece) tokenizer
 
 ```python
 >>> from gluonnlp.data import SentencepieceTokenizer
@@ -175,11 +176,16 @@ Vocab(size=8002, unk="[UNK]", reserved="['[MASK]', '[SEP]', '[CLS]']")
 
 * [Naver Sentiment Analysis Evaluation Results](https://github.com/e9t/nsmc)
 
-| Model(ver)  |  Accuracy  |
+| Model |  Accuracy  |
 |---|---|
 | [BERT base multilingual cased](https://github.com/google-research/bert/blob/master/multilingual.md) |  0.875  |
 | KoBERT | **[0.901](logs/bert_naver_small_512_news_simple_20190624.txt)**|
 
 ### Contacts
 
-버트활용에 도움이 필요하시면, [이슈](https://github.com/SKTBrain/KoBERT/issues)를 등록해 주시기 바랍니다.
+`KoBERT` 활용에 도움이 필요하시면, [이슈](https://github.com/SKTBrain/KoBERT/issues)를 등록해 주시기 바랍니다.
+
+### License
+
+`KoBERT`는 Apache-2.0 라이선스 하에 공개되어 있습니다. 모델 및 코드를 사용할 경우 라이선스 내용을 준수해주세요. 라이선스 전문은 `LICENSE` 파일에서 확인하실 수 있습니다.
+
