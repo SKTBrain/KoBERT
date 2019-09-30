@@ -159,6 +159,9 @@ Vocab(size=8002, unk="[UNK]", reserved="['[MASK]', '[SEP]', '[CLS]']")
 <NDArray 3x768 @cpu(0)>
 ```
 
+- Naver Sentiment Analysis Fine-Tuning with MXNet
+  - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SKTBrain/KoBERT/blob/master/scripts/naver_review_classifications_gluon_kobert.ipynb)
+
 ### Tokenizer
 
 * Pretrained [Sentencepiece](https://github.com/google/sentencepiece) tokenizer
