@@ -186,7 +186,7 @@ Vocab(size=8002, unk="[UNK]", reserved="['[MASK]', '[SEP]', '[CLS]']")
 
 ### Contacts
 
-`KoBERT` 활용에 도움이 필요하시면, [이슈](https://github.com/SKTBrain/KoBERT/issues)를 등록해 주시기 바랍니다.
+`KoBERT` 관련 이슈는 [이곳](https://github.com/SKTBrain/KoBERT/issues)에 등록해 주시기 바랍니다.
 
 ### License
 
