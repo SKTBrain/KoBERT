@@ -1,22 +1,26 @@
 
-<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 
-<!-- code_chunk_output -->
+<!-- TOC -->
 
 - [Korean BERT pre-trained cased (KoBERT)](#korean-bert-pre-trained-cased-kobert)
-  - [Why'?'](#why)
-  - [Training Environment](#training-environment)
-  - [Requirements](#requirements)
-- [How to install](#how-to-install)
-- [Using with PyTorch](#using-with-pytorch)
-- [Using with ONNX](#using-with-onnxhttpsonnxai)
-- [Using with MXNet-Gluon](#using-with-mxnet-gluon)
-- [Tokenizer](#tokenizer)
-- [Fine-tuning Performances](#fine-tuning-performances)
+    - [Why'?'](#why)
+    - [Training Environment](#training-environment)
+    - [Requirements](#requirements)
+    - [How to install](#how-to-install)
+- [How to use](#how-to-use)
+    - [Using with PyTorch](#using-with-pytorch)
+    - [Using with ONNX](#using-with-onnx)
+    - [Using with MXNet-Gluon](#using-with-mxnet-gluon)
+    - [Tokenizer](#tokenizer)
+- [Subtasks](#subtasks)
+    - [Naver Sentiment Analysis](#naver-sentiment-analysis)
+    - [KoBERT와 CRF로 만든 한국어 객체명인식기](#kobert와-crf로-만든-한국어-객체명인식기)
 - [Contacts](#contacts)
 - [License](#license)
 
-<!-- /code_chunk_output -->
+<!-- /TOC -->
+
+---
 
 ### Korean BERT pre-trained cased (KoBERT)
 
@@ -73,7 +77,7 @@ predefined_args = {
 * sentencepiece >= 0.1.6
 * onnxruntime >= 0.3.0
 
-### How to install
+#### How to install
 
 ```sh
 git clone https://github.com/SKTBrain/KoBERT.git
@@ -82,7 +86,11 @@ pip install -r requirements.txt
 pip install .
 ```
 
-### Using with PyTorch
+---
+
+### How to use
+
+#### Using with PyTorch
 
 ```python
 >>> import torch
@@ -106,7 +114,7 @@ tensor([[-0.2461,  0.2428,  0.2590,  ..., -0.4861, -0.0731,  0.0756],
 
 `model`은 디폴트로 `eval()`모드로 리턴됨, 따라서 학습 용도로 사용시 `model.train()`명령을 통해 학습 모드로 변경할 필요가 있다.
 
-### Using with [ONNX](https://onnx.ai/)
+#### Using with ONNX
 
 ```python
 >>> import onnxruntime
@@ -134,7 +142,7 @@ array([[-0.24610452,  0.24282141,  0.25895312, ..., -0.48613444,
 
 _ONNX 컨버팅은 [soeque1](https://github.com/soeque1)께서 도움을 주셨습니다._
 
-### Using with MXNet-Gluon
+#### Using with MXNet-Gluon
 
 ```python
 >>> import mxnet as mx
@@ -162,7 +170,7 @@ Vocab(size=8002, unk="[UNK]", reserved="['[MASK]', '[SEP]', '[CLS]']")
 - Naver Sentiment Analysis Fine-Tuning with MXNet
   - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SKTBrain/KoBERT/blob/master/scripts/NSMC/naver_review_classifications_gluon_kobert.ipynb)
 
-### Tokenizer
+#### Tokenizer
 
 * Pretrained [Sentencepiece](https://github.com/google/sentencepiece) tokenizer
 
@@ -175,14 +183,26 @@ Vocab(size=8002, unk="[UNK]", reserved="['[MASK]', '[SEP]', '[CLS]']")
 ['▁한국', '어', '▁모델', '을', '▁공유', '합니다', '.']
 ```
 
-### Fine-tuning Performances
+---
 
-* [Naver Sentiment Analysis Evaluation Results](https://github.com/e9t/nsmc)
+### Subtasks
+
+#### Naver Sentiment Analysis
+
+- Dataset : https://github.com/e9t/nsmc
+
 
 | Model |  Accuracy  |
 |---|---|
 | [BERT base multilingual cased](https://github.com/google-research/bert/blob/master/multilingual.md) |  0.875  |
 | KoBERT | **[0.901](logs/bert_naver_small_512_news_simple_20190624.txt)**|
+
+#### KoBERT와 CRF로 만든 한국어 객체명인식기
+
+- https://github.com/eagle705/pytorch-bert-crf-ner
+
+
+---
 
 ### Contacts
 
