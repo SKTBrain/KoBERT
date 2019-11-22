@@ -23,21 +23,13 @@ import gluonnlp as nlp
 from gluonnlp.model import BERTModel, BERTEncoder
 
 from .utils import download as _download
+from .utils import tokenizer
 
-
-kobert_models = {
-    'mxnet_kobert': {
-        'url':
-        'https://kobert.blob.core.windows.net/models/kobert/mxnet/mxnet_kobert_45b6957552.params',
-        'fname': 'mxnet_kobert_45b6957552.params',
-        'chksum': '45b6957552'
-    },
-    'vocab': {
-        'url':
-        'https://kobert.blob.core.windows.net/models/kobert/vocab/kobertvocab_f38b8a4d6d.json',
-        'fname': 'kobertvocab_f38b8a4d6d.json',
-        'chksum': 'f38b8a4d6d'
-    }
+mxnet_kobert = {
+    'url':
+    'https://kobert.blob.core.windows.net/models/kobert/mxnet/mxnet_kobert_45b6957552.params',
+    'fname': 'mxnet_kobert_45b6957552.params',
+    'chksum': '45b6957552'
 }
 
 
@@ -47,13 +39,13 @@ def get_mxnet_kobert_model(use_pooler=True,
                            ctx=mx.cpu(0),
                            cachedir='~/kobert/'):
     # download model
-    model_info = kobert_models['mxnet_kobert']
+    model_info = mxnet_kobert
     model_path = _download(model_info['url'],
                            model_info['fname'],
                            model_info['chksum'],
                            cachedir=cachedir)
     # download vocab
-    vocab_info = kobert_models['vocab']
+    vocab_info = tokenizer
     vocab_path = _download(vocab_info['url'],
                            vocab_info['fname'],
                            vocab_info['chksum'],
@@ -68,7 +60,8 @@ def get_kobert_model(model_file,
                      use_decoder=True,
                      use_classifier=True,
                      ctx=mx.cpu(0)):
-    vocab_b_obj = nlp.vocab.BERTVocab.from_json(open(vocab_file, 'rt').read())
+    vocab_b_obj = nlp.vocab.BERTVocab.from_sentencepiece(vocab_file,
+                                                         padding_token='[PAD]')
 
     predefined_args = {
         'attention_cell': 'multi_head',

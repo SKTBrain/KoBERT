@@ -18,19 +18,18 @@ import sys
 import requests
 import hashlib
 
-kobert_models = {
-    'onnx_kobert': {
-        'url':
-        'https://kobert.blob.core.windows.net/models/kobert/onnx/onnx_kobert_44529811f0.onnx',
-        'fname': 'onnx_kobert_44529811f0.onnx',
-        'chksum': '44529811f0'
-    },
-    'tokenizer': {
-        'url':
-        'https://kobert.blob.core.windows.net/models/kobert/tokenizer/tokenizer_78b3253a26.model',
-        'fname': 'tokenizer_78b3253a26.model',
-        'chksum': '78b3253a26'
-    }
+onnx_kobert = {
+    'url':
+    'https://kobert.blob.core.windows.net/models/kobert/onnx/onnx_kobert_44529811f0.onnx',
+    'fname': 'onnx_kobert_44529811f0.onnx',
+    'chksum': '44529811f0'
+}
+
+tokenizer = {
+    'url':
+    'https://kobert.blob.core.windows.net/models/kobert/tokenizer/kobert_news_wiki_ko_cased-1087f8699e.spiece',
+    'fname': 'kobert_news_wiki_ko_cased-1087f8699e.spiece',
+    'chksum': '1087f8699e'
 }
 
 
@@ -69,17 +68,18 @@ def download(url, filename, chksum, cachedir='~/kobert/'):
 def get_onnx(cachedir='~/kobert/'):
     """Get KoBERT ONNX file path after downloading
     """
-    model_info = kobert_models['onnx_kobert']
+    model_info = onnx_kobert
     return download(model_info['url'],
                     model_info['fname'],
                     model_info['chksum'],
                     cachedir=cachedir)
 
+
 def get_tokenizer(cachedir='~/kobert/'):
     """Get KoBERT Tokenizer file path after downloading
     """
-    model_info = kobert_models['tokenizer']
+    model_info = tokenizer
     return download(model_info['url'],
-                        model_info['fname'],
-                        model_info['chksum'],
-                        cachedir=cachedir)    
+                    model_info['fname'],
+                    model_info['chksum'],
+                    cachedir=cachedir)

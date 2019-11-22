@@ -1,24 +1,6 @@
 
 
-<!-- TOC -->
-
-- [Korean BERT pre-trained cased (KoBERT)](#korean-bert-pre-trained-cased-kobert)
-    - [Why'?'](#why)
-    - [Training Environment](#training-environment)
-    - [Requirements](#requirements)
-    - [How to install](#how-to-install)
-- [How to use](#how-to-use)
-    - [Using with PyTorch](#using-with-pytorch)
-    - [Using with ONNX](#using-with-onnx)
-    - [Using with MXNet-Gluon](#using-with-mxnet-gluon)
-    - [Tokenizer](#tokenizer)
-- [Subtasks](#subtasks)
-    - [Naver Sentiment Analysis](#naver-sentiment-analysis)
-    - [KoBERT와 CRF로 만든 한국어 객체명인식기](#kobert와-crf로-만든-한국어-객체명인식기)
-- [Contacts](#contacts)
-- [License](#license)
-
-<!-- /TOC -->
+<!-- TOC -->autoauto- [Korean BERT pre-trained cased (KoBERT)](#korean-bert-pre-trained-cased-kobert)auto    - [Why'?'](#why)auto    - [Training Environment](#training-environment)auto    - [Requirements](#requirements)auto    - [How to install](#how-to-install)auto- [How to use](#how-to-use)auto    - [Using with PyTorch](#using-with-pytorch)auto    - [Using with ONNX](#using-with-onnx)auto    - [Using with MXNet-Gluon](#using-with-mxnet-gluon)auto    - [Tokenizer](#tokenizer)auto- [Subtasks](#subtasks)auto    - [Naver Sentiment Analysis](#naver-sentiment-analysis)auto    - [KoBERT와 CRF로 만든 한국어 객체명인식기](#kobert와-crf로-만든-한국어-객체명인식기)auto- [Version History](#version-history)auto- [Contacts](#contacts)auto- [License](#license)autoauto<!-- /TOC -->
 
 ---
 
@@ -211,6 +193,11 @@ decoding_ner_sentence: [CLS] <SKTBrain:ORG>에서 <KoBERT:POH> 모델을 공개�
 
 ---
 
+### Version History
+
+* v.0.1 : 초기 모델 릴리즈
+* v.0.1.1 : 사전(vocabulary)과 토크나이저 통합
+
 ### Contacts
 
 `KoBERT` 관련 이슈는 [이곳](https://github.com/SKTBrain/KoBERT/issues)에 등록해 주시기 바랍니다.
@@ -218,4 +205,3 @@ decoding_ner_sentence: [CLS] <SKTBrain:ORG>에서 <KoBERT:POH> 모델을 공개�
 ### License
 
 `KoBERT`는 Apache-2.0 라이선스 하에 공개되어 있습니다. 모델 및 코드를 사용할 경우 라이선스 내용을 준수해주세요. 라이선스 전문은 `LICENSE` 파일에서 확인하실 수 있습니다.
-
