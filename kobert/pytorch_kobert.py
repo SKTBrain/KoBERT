@@ -20,7 +20,7 @@ import hashlib
 
 import torch
 
-from pytorch_pretrained_bert import BertModel, BertConfig
+from transformers import BertModel, BertConfig
 import gluonnlp as nlp
 
 from .utils import download as _download
