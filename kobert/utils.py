@@ -27,7 +27,7 @@ onnx_kobert = {
 
 tokenizer = {
     'url':
-    'https://kobert.blob.core.windows.net/models/kobert/tokenizer/kobert_news_wiki_ko_cased-1087f8699e.spiece',
+    'https://kobert.blob.core.windows.net/models/kobert/tokenizer/kobert_news_wiki_ko_cased-ae5711deb3.spiece',
     'fname': 'kobert_news_wiki_ko_cased-1087f8699e.spiece',
     'chksum': '1087f8699e'
 }
