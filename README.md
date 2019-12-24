@@ -173,6 +173,9 @@ Vocab(size=8002, unk="[UNK]", reserved="['[MASK]', '[SEP]', '[CLS]']")
 - Naver Sentiment Analysis Fine-Tuning with MXNet
   - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SKTBrain/KoBERT/blob/master/scripts/NSMC/naver_review_classifications_gluon_kobert.ipynb)
 
+- Naver Sentiment Analysis Fine-Tuning with pytorch
+  - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SKTBrain/KoBERT/blob/master/scripts/NSMC/naver_review_classifications_pytorch_kobert.ipynb)
+
 #### Tokenizer
 
 * Pretrained [Sentencepiece](https://github.com/google/sentencepiece) tokenizer
