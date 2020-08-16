@@ -13,14 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import os
-import sys
-import requests
-import hashlib
-
-import mxnet as mx
 import gluonnlp as nlp
-from gluonnlp.model import BERTModel, BERTEncoder
+import mxnet as mx
+from gluonnlp.model import BERTEncoder, BERTModel
 
 from .utils import download as _download
 from .utils import tokenizer
@@ -79,17 +74,14 @@ def get_kobert_model(model_file,
         'word_embed': None,
     }
 
-    encoder = BERTEncoder(attention_cell=predefined_args['attention_cell'],
-                          num_layers=predefined_args['num_layers'],
+    encoder = BERTEncoder(num_layers=predefined_args['num_layers'],
                           units=predefined_args['units'],
                           hidden_size=predefined_args['hidden_size'],
                           max_length=predefined_args['max_length'],
                           num_heads=predefined_args['num_heads'],
-                          scaled=predefined_args['scaled'],
                           dropout=predefined_args['dropout'],
                           output_attention=False,
-                          output_all_encodings=False,
-                          use_residual=predefined_args['use_residual'])
+                          output_all_encodings=False)
 
     # BERT
     net = BERTModel(
@@ -98,7 +90,6 @@ def get_kobert_model(model_file,
         token_type_vocab_size=predefined_args['token_type_vocab_size'],
         units=predefined_args['units'],
         embed_size=predefined_args['embed_size'],
-        embed_dropout=predefined_args['embed_dropout'],
         word_embed=predefined_args['word_embed'],
         use_pooler=use_pooler,
         use_decoder=use_decoder,
