@@ -78,7 +78,7 @@ predefined_args = {
 * gluonnlp >= 0.6.0
 * sentencepiece >= 0.1.6
 * onnxruntime >= 0.3.0
-* transformers >= 2.1.1
+* transformers >= 2.1.1, <= 3.0.2
 
 #### How to install
 
