@@ -73,12 +73,12 @@ predefined_args = {
 #### Requirements
 
 * Python >= 3.6
-* PyTorch >= 1.1.0
+* PyTorch >= 1.7.0
 * MXNet >= 1.4.0
 * gluonnlp >= 0.6.0
 * sentencepiece >= 0.1.6
 * onnxruntime >= 0.3.0
-* transformers >= 2.1.1, <= 3.0.2
+* transformers >= 3.5.0
 
 #### How to install
 
