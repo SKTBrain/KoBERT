@@ -58,7 +58,6 @@ predefined_args = {
 | 데이터  |  문장  | 단어 |
 |---|---|---|
 | 한국어 위키  |  5M |  54M  |
-| 한국어 뉴스  |  20M | 270M |
 
 * 학습 환경
   * V100 GPU x 32, Horovod(with InfiniBand)
@@ -67,7 +66,7 @@ predefined_args = {
 
 * 사전(Vocabulary)
   * 크기 : 8,002
-  * 한글 위키 + 뉴스 텍스트 기반으로 학습한 토크나이저(SentencePiece)
+  * 한글 위키 기반으로 학습한 토크나이저(SentencePiece)
   * Less number of parameters(92M < 110M )
 
 #### Requirements
