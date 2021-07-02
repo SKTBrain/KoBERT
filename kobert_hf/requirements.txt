@@ -1,0 +1,2 @@
+torch >= 1.8.1
+transformers >= 4.8.2
