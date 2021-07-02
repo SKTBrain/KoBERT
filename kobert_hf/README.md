@@ -25,6 +25,7 @@ KoBERT를 Huggingface.co 기반으로 사용할 수 있게 Wrapping 작업을 �
 * Python >= 3.6
 * PyTorch >= 1.8.1
 * transformers >= 4.8.2
+* sentencepiece >= 0.1.91
 
 #### How to install
 
