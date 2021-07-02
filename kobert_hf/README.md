@@ -44,7 +44,7 @@ python setup.py install
 
 기존 Tokenizer와 동일하게 사전 크기는 8,002개 입니다.
 
-일반적인 토크나이저 사용시(예) inference) 아래와 같이 사용하면 됩니다. 
+일반적인 토크나이저 사용시(예: inference) 아래와 같이 사용하면 됩니다. 
 
 ```python
 > from kobert_tokenizer import KoBERTTokenizer
