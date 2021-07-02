@@ -59,6 +59,7 @@ python setup.py install
 > text = "한국어 모델을 공유합니다."
 > inputs = tokenizer.batch_encode_plus([text])
 > out = model(input_ids = torch.tensor(inputs['input_ids']),
+              token_type_ids = torch.tensor(inputs['token_type_ids']),
               attention_mask = torch.tensor(inputs['attention_mask']))
 > out.pooler_output.shape
 torch.Size([1, 768])
