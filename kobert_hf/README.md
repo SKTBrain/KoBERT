@@ -37,19 +37,32 @@ python setup.py install
 
 ---
 
-### Tokenizer
+### Tokenizer (BPE-dropout)
 
 [XLNetTokenizer](https://github.com/huggingface/transformers/blob/master/src/transformers/models/xlnet/tokenization_xlnet.py)를 활용하여 Wrapping 작업을 진행하였습니다.
 
 기존 Tokenizer와 동일하게 사전 크기는 8,002개 입니다.
+
+일반적인 토크나이저 사용시(예) inference) 아래와 같이 사용하면 됩니다. 
 
 ```python
 > from kobert_tokenizer import KoBERTTokenizer
 > tokenizer = KoBERTTokenizer.from_pretrained('skt/kobert-base-v1')
 > tokenizer.encode("한국어 모델을 공유합니다.")
 [2, 4958, 6855, 2046, 7088, 1050, 7843, 54, 3]
-
 ```
+
+[`BPE-dropout`](https://arxiv.org/pdf/1910.13267.pdf)을 기법을 이용하면 띄어쓰기에 강건한 모델로 튜닝 할 수 있습니다.
+학습시 아래와 유사한 토크나이저 설정으로 학습을 진행할 수 있습니다.
+
+```python
+> from kobert_tokenizer import KoBERTTokenizer
+> tokenizer = KoBERTTokenizer.from_pretrained('skt/kobert-base-v1', sp_model_kwargs={'nbest_size': -1, 'alpha': 0.6, 'enable_sampling': True})
+> tokenizer.encode("한국어 모델을 공유합니다.")
+[2, 4958, 6855, 2046, 7088, 1023, 7063, 7843, 54, 3]
+```
+
+
 
 ### Model
 ```python
