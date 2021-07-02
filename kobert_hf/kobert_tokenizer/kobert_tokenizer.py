@@ -84,8 +84,9 @@ class KoBERTTokenizer(XLNetTokenizer):
             sequence(s).
         """
         sep = [self.sep_token_id]
+        cls = [self.cls_token_id]
         cls_segment_id = [2]
 
         if token_ids_1 is None:
-            return len(token_ids_0 + sep) * [0]
-        return len(token_ids_0 + sep) * [0] + len(token_ids_1 + sep) * [1]
+            return len(cls + token_ids_0 + sep) * [0]
+        return len(cls + token_ids_0 + sep) * [0] + len(token_ids_1 + sep) * [1]
