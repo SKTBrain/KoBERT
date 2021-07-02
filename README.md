@@ -94,6 +94,8 @@ pip install .
 
 #### Using with PyTorch
 
+**Huggingface transformers API가 편하신 분은 [여기](kobert_hf)를 참고하세요.** 
+
 ```python
 >>> import torch
 >>> from kobert.pytorch_kobert import get_pytorch_kobert_model
