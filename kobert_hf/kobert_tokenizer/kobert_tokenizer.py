@@ -48,8 +48,8 @@ class KoBERTTokenizer(XLNetTokenizer):
         """
         Build model inputs from a sequence or a pair of sequence for sequence classification tasks by concatenating and
         adding special tokens. An XLNet sequence has the following format:
-        - single sequence: ``X <sep> <cls>``
-        - pair of sequences: ``A <sep> B <sep> <cls>``
+        - single sequence: ``<cls> X <sep>``
+        - pair of sequences: ``<cls> A <sep> B <sep>``
         Args:
             token_ids_0 (:obj:`List[int]`):
                 List of IDs to which the special tokens will be added.
