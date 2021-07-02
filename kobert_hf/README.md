@@ -52,8 +52,7 @@ python setup.py install
 [2, 4958, 6855, 2046, 7088, 1050, 7843, 54, 3]
 ```
 
-[`BPE-dropout`](https://arxiv.org/pdf/1910.13267.pdf)을 기법을 이용하면 띄어쓰기에 강건한 모델로 튜닝 할 수 있습니다.
-학습시 아래와 유사한 토크나이저 설정으로 학습을 진행할 수 있습니다.
+[`BPE-dropout`](https://arxiv.org/pdf/1910.13267.pdf)을 기법을 이용하면 서비스에 적합한 띄어쓰기에 강건한 모델로 튜닝 할 수 있습니다. 학습시 아래와 유사한 토크나이저 설정으로 학습을 진행할 수 있습니다. 자세한 옵션 설명은 [이곳](https://github.com/google/sentencepiece/tree/master/python)을 참고하세요.
 
 ```python
 > from kobert_tokenizer import KoBERTTokenizer
