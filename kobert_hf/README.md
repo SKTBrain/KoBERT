@@ -30,10 +30,7 @@ KoBERT를 Huggingface.co 기반으로 사용할 수 있게 Wrapping 작업을 �
 #### How to install
 
 ```sh
-git clone https://github.com/SKTBrain/KoBERT.git
-cd KoBERT/kobert_hf
-pip install -r requirements.txt
-python setup.py install
+pip install 'git+https://github.com/SKTBrain/KoBERT.git#egg=kobert_tokenizer&subdirectory=kobert_hf'
 ```
 
 ---
