@@ -59,6 +59,7 @@ class KoBERTTokenizer(XLNetTokenizer):
             sp_model_kwargs=self.sp_model_kwargs,
             **kwargs,
         )
+        self._pad_token_type_id = 0
 
     def build_inputs_with_special_tokens(
             self,
