@@ -1,37 +1,32 @@
+# KoBERT
 
-
-<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
-
-<!-- code_chunk_output -->
-
-- [Korean BERT pre-trained cased (KoBERT)](#korean-bert-pre-trained-cased-kobert)
-  - [Why'?'](#why)
-  - [Training Environment](#training-environment)
-  - [Requirements](#requirements)
-  - [How to install](#how-to-install)
-- [How to use](#how-to-use)
-  - [Using with PyTorch](#using-with-pytorch)
-  - [Using with ONNX](#using-with-onnx)
-  - [Using with MXNet-Gluon](#using-with-mxnet-gluon)
-  - [Tokenizer](#tokenizer)
-- [Subtasks](#subtasks)
-  - [Naver Sentiment Analysis](#naver-sentiment-analysis)
-  - [KoBERT와 CRF로 만든 한국어 객체명인식기](#kobert와-crf로-만든-한국어-객체명인식기)
-- [Version History](#version-history)
-- [Contacts](#contacts)
-- [License](#license)
-
-<!-- /code_chunk_output -->
+* [KoBERT](#kobert)
+  * [Korean BERT pre-trained cased (KoBERT)](#korean-bert-pre-trained-cased-kobert)
+    * [Why'?'](#why)
+    * [Training Environment](#training-environment)
+    * [Requirements](#requirements)
+    * [How to install](#how-to-install)
+  * [How to use](#how-to-use)
+    * [Using with PyTorch](#using-with-pytorch)
+    * [Using with ONNX](#using-with-onnx)
+    * [Using with MXNet-Gluon](#using-with-mxnet-gluon)
+    * [Tokenizer](#tokenizer)
+  * [Subtasks](#subtasks)
+    * [Naver Sentiment Analysis](#naver-sentiment-analysis)
+    * [KoBERT와 CRF로 만든 한국어 객체명인식기](#kobert와-crf로-만든-한국어-객체명인식기)
+  * [Version History](#version-history)
+  * [Contacts](#contacts)
+  * [License](#license)
 
 ---
 
-### Korean BERT pre-trained cased (KoBERT)
+## Korean BERT pre-trained cased (KoBERT)
 
-#### Why'?'
+### Why'?'
 
 * 구글 [BERT base multilingual cased](https://github.com/google-research/bert/blob/master/multilingual.md)의 한국어 성능 한계
 
-#### Training Environment
+### Training Environment
 
 * Architecture
 
@@ -55,9 +50,9 @@ predefined_args = {
 
 * 학습셋
 
-| 데이터  |  문장  | 단어 |
-|---|---|---|
-| 한국어 위키  |  5M |  54M  |
+| 데이터      | 문장 | 단어 |
+| ----------- | ---- | ---- |
+| 한국어 위키 | 5M   | 54M  |
 
 * 학습 환경
   * V100 GPU x 32, Horovod(with InfiniBand)
@@ -69,7 +64,7 @@ predefined_args = {
   * 한글 위키 기반으로 학습한 토크나이저(SentencePiece)
   * Less number of parameters(92M < 110M )
 
-#### Requirements
+### Requirements
 
 * Python >= 3.6
 * PyTorch >= 1.7.0
@@ -79,7 +74,7 @@ predefined_args = {
 * onnxruntime >= 0.3.0
 * transformers >= 3.5.0
 
-#### How to install
+### How to install
 
 ```sh
 git clone https://github.com/SKTBrain/KoBERT.git
@@ -90,9 +85,9 @@ pip install .
 
 ---
 
-### How to use
+## How to use
 
-#### Using with PyTorch
+### Using with PyTorch
 
 *Huggingface transformers API가 편하신 분은 [여기](kobert_hf)를 참고하세요.*
 
@@ -118,12 +113,11 @@ tensor([[-0.2461,  0.2428,  0.2590,  ..., -0.4861, -0.0731,  0.0756],
 
 `model`은 디폴트로 `eval()`모드로 리턴됨, 따라서 학습 용도로 사용시 `model.train()`명령을 통해 학습 모드로 변경할 필요가 있다.
 
-- Naver Sentiment Analysis Fine-Tuning with pytorch
-  - Colab에서 [런타임] - [런타임 유형 변경] - 하드웨어 가속기(GPU) 사용을 권장합니다.
-  - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SKTBrain/KoBERT/blob/master/scripts/NSMC/naver_review_classifications_pytorch_kobert.ipynb)
+* Naver Sentiment Analysis Fine-Tuning with pytorch
+  * Colab에서 [런타임] - [런타임 유형 변경] - 하드웨어 가속기(GPU) 사용을 권장합니다.
+  * [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SKTBrain/KoBERT/blob/master/scripts/NSMC/naver_review_classifications_pytorch_kobert.ipynb)
 
-
-#### Using with ONNX
+### Using with ONNX
 
 ```python
 >>> import onnxruntime
@@ -151,7 +145,7 @@ array([[-0.24610452,  0.24282141,  0.25895312, ..., -0.48613444,
 
 _ONNX 컨버팅은 [soeque1](https://github.com/soeque1)께서 도움을 주셨습니다._
 
-#### Using with MXNet-Gluon
+### Using with MXNet-Gluon
 
 ```python
 >>> import mxnet as mx
@@ -176,10 +170,10 @@ Vocab(size=8002, unk="[UNK]", reserved="['[MASK]', '[SEP]', '[CLS]']")
 <NDArray 3x768 @cpu(0)>
 ```
 
-- Naver Sentiment Analysis Fine-Tuning with MXNet
-  - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SKTBrain/KoBERT/blob/master/scripts/NSMC/naver_review_classifications_gluon_kobert.ipynb)
+* Naver Sentiment Analysis Fine-Tuning with MXNet
+  * [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SKTBrain/KoBERT/blob/master/scripts/NSMC/naver_review_classifications_gluon_kobert.ipynb)
 
-#### Tokenizer
+### Tokenizer
 
 * Pretrained [Sentencepiece](https://github.com/google/sentencepiece) tokenizer
 
@@ -194,25 +188,23 @@ Vocab(size=8002, unk="[UNK]", reserved="['[MASK]', '[SEP]', '[CLS]']")
 
 ---
 
-### Subtasks
+## Subtasks
 
-#### Naver Sentiment Analysis
+### Naver Sentiment Analysis
 
-- Dataset : https://github.com/e9t/nsmc
+* Dataset : <https://github.com/e9t/nsmc>
 
+| Model                                                                                               | Accuracy                                                        |
+| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| [BERT base multilingual cased](https://github.com/google-research/bert/blob/master/multilingual.md) | 0.875                                                           |
+| KoBERT                                                                                              | **[0.901](logs/bert_naver_small_512_news_simple_20190624.txt)** |
+| [KoGPT2](https://github.com/SKT-AI/KoGPT2)                                                          | 0.899                                                           |
 
-| Model |  Accuracy  |
-|---|---|
-| [BERT base multilingual cased](https://github.com/google-research/bert/blob/master/multilingual.md) |  0.875  |
-| KoBERT | **[0.901](logs/bert_naver_small_512_news_simple_20190624.txt)**|
-| [KoGPT2](https://github.com/SKT-AI/KoGPT2) | 0.899 |
+### KoBERT와 CRF로 만든 한국어 객체명인식기
 
-#### KoBERT와 CRF로 만든 한국어 객체명인식기
+* <https://github.com/eagle705/pytorch-bert-crf-ner>
 
-- https://github.com/eagle705/pytorch-bert-crf-ner
-
-
-```
+```text
 문장을 입력하세요:  SKTBrain에서 KoBERT 모델을 공개해준 덕분에 BERT-CRF 기반 객체명인식기를 쉽게 개발할 수 있었다.
 len: 40, input_token:['[CLS]', '▁SK', 'T', 'B', 'ra', 'in', '에서', '▁K', 'o', 'B', 'ER', 'T', '▁모델', '을', '▁공개', '해', '준', '▁덕분에', '▁B', 'ER', 'T', '-', 'C', 'R', 'F', '▁기반', '▁', '객', '체', '명', '인', '식', '기를', '▁쉽게', '▁개발', '할', '▁수', '▁있었다', '.', '[SEP]']
 len: 40, pred_ner_tag:['[CLS]', 'B-ORG', 'I-ORG', 'I-ORG', 'I-ORG', 'I-ORG', 'O', 'B-POH', 'I-POH', 'I-POH', 'I-POH', 'I-POH', 'O', 'O', 'O', 'O', 'O', 'O', 'B-POH', 'I-POH', 'I-POH', 'I-POH', 'I-POH', 'I-POH', 'I-POH', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', '[SEP]']
@@ -221,15 +213,15 @@ decoding_ner_sentence: [CLS] <SKTBrain:ORG>에서 <KoBERT:POH> 모델을 공개�
 
 ---
 
-### Version History
+## Version History
 
 * v.0.1 : 초기 모델 릴리즈
 * v.0.1.1 : 사전(vocabulary)과 토크나이저 통합
 
-### Contacts
+## Contacts
 
 `KoBERT` 관련 이슈는 [이곳](https://github.com/SKTBrain/KoBERT/issues)에 등록해 주시기 바랍니다.
 
-### License
+## License
 
 `KoBERT`는 Apache-2.0 라이선스 하에 공개되어 있습니다. 모델 및 코드를 사용할 경우 라이선스 내용을 준수해주세요. 라이선스 전문은 `LICENSE` 파일에서 확인하실 수 있습니다.
