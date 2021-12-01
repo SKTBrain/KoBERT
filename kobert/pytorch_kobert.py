@@ -39,7 +39,7 @@ def get_pytorch_kobert_model(ctx='cpu', cachedir='~/kobert/'):
                            model_info['fname'],
                            model_info['chksum'],
                            cachedir=cachedir)
-    
+
     zipf = ZipFile(os.path.expanduser(model_down))
     zipf.extractall(path=os.path.expanduser(cachedir))
     model_path = os.path.join(os.path.expanduser(cachedir), 'kobert_from_pretrained')
@@ -53,7 +53,7 @@ def get_pytorch_kobert_model(ctx='cpu', cachedir='~/kobert/'):
 
 
 def get_kobert_model(model_path, vocab_file, ctx="cpu"):
-    bertmodel = BertModel.from_pretrained(model_path)
+    bertmodel = BertModel.from_pretrained(model_path, return_dict=False)
     device = torch.device(ctx)
     bertmodel.to(device)
     bertmodel.eval()
