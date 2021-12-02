@@ -103,3 +103,17 @@ def get_kobert_model(
     net.initialize(ctx=ctx)
     net.load_parameters(model_file, ctx, ignore_extra=True)
     return (net, vocab_b_obj)
+
+
+if __name__ == "__main__":
+    import mxnet as mx
+    from kobert.mxnet_kobert import get_mxnet_kobert_model
+
+    input_id = mx.nd.array([[31, 51, 99], [15, 5, 0]])
+    input_mask = mx.nd.array([[1, 1, 1], [1, 1, 0]])
+    token_type_ids = mx.nd.array([[0, 0, 1], [0, 1, 0]])
+    model, vocab = get_mxnet_kobert_model(use_decoder=False, use_classifier=False)
+    encoder_layer, pooled_output = model(input_id, token_type_ids)
+    print(pooled_output.shape)
+    print(vocab)
+    print(encoder_layer[0])
