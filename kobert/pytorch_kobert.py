@@ -21,8 +21,8 @@ import torch
 from transformers import BertModel
 import gluonnlp as nlp
 
-from .utils import download as _download
-from .utils import tokenizer
+from kobert.utils import download as _download
+from kobert.utils import tokenizer
 
 pytorch_kobert = {
     "url": "https://kobert.blob.core.windows.net/models/kobert/pytorch/kobert_v1.zip",

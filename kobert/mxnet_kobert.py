@@ -17,8 +17,8 @@ import gluonnlp as nlp
 import mxnet as mx
 from gluonnlp.model import BERTEncoder, BERTModel
 
-from .utils import download as _download
-from .utils import tokenizer
+from kobert.utils import download as _download
+from kobert.utils import tokenizer
 
 mxnet_kobert = {
     "url": "https://kobert.blob.core.windows.net/models/kobert/mxnet/mxnet_kobert_45b6957552.params",
