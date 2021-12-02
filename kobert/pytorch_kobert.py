@@ -31,7 +31,7 @@ pytorch_kobert = {
 }
 
 
-def get_pytorch_kobert_model(ctx="cpu", cachedir="~/kobert/"):
+def get_pytorch_kobert_model(ctx="cpu", cachedir=".cache"):
     # download model
     model_info = pytorch_kobert
     model_down = _download(

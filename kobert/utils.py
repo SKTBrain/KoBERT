@@ -31,7 +31,7 @@ tokenizer = {
 }
 
 
-def download(url, filename, chksum, cachedir="~/kobert/"):
+def download(url, filename, chksum, cachedir=".cache"):
     f_cachedir = os.path.expanduser(cachedir)
     os.makedirs(f_cachedir, exist_ok=True)
     file_path = os.path.join(f_cachedir, filename)
@@ -54,7 +54,7 @@ def download(url, filename, chksum, cachedir="~/kobert/"):
                 downloaded += len(data)
                 f.write(data)
                 done = int(50 * downloaded / total)
-                sys.stdout.write("\r[{}{}]".format("█" * done, "." * (50 - done)))
+                sys.stdout.write("\r{}[{}{}]".format(file_path, "█" * done, "." * (50 - done)))
                 sys.stdout.flush()
     sys.stdout.write("\n")
     assert (
@@ -63,7 +63,7 @@ def download(url, filename, chksum, cachedir="~/kobert/"):
     return file_path
 
 
-def get_onnx(cachedir="~/kobert/"):
+def get_onnx(cachedir=".cache"):
     """Get KoBERT ONNX file path after downloading"""
     model_info = onnx_kobert
     return download(
@@ -71,7 +71,7 @@ def get_onnx(cachedir="~/kobert/"):
     )
 
 
-def get_tokenizer(cachedir="~/kobert/"):
+def get_tokenizer(cachedir=".cache"):
     """Get KoBERT Tokenizer file path after downloading"""
     model_info = tokenizer
     return download(

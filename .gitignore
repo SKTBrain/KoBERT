@@ -1,3 +1,1 @@
-ratings_test.txt
-ratings_train.txt
-*.egg-info
+.cache

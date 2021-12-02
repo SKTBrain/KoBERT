@@ -32,7 +32,7 @@ def get_mxnet_kobert_model(
     use_decoder=True,
     use_classifier=True,
     ctx=mx.cpu(0),
-    cachedir="~/kobert/",
+    cachedir=".cache",
 ):
     # download model
     model_info = mxnet_kobert
