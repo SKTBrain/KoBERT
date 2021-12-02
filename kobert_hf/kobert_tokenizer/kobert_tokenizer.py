@@ -16,6 +16,7 @@
 from typing import Any, Dict, List, Optional
 from transformers.tokenization_utils import AddedToken
 from transformers import XLNetTokenizer
+from transformers import SPIECE_UNDERLINE
 
 
 class KoBERTTokenizer(XLNetTokenizer):
