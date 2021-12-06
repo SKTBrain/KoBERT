@@ -1,5 +1,4 @@
 from setuptools import setup
-from kobert import __version__
 
 
 def install_requires():
@@ -11,7 +10,7 @@ def install_requires():
 
 setup(
     name="kobert",
-    version=__version__,
+    version="0.1.2",
     url="https://github.com/SKTBrain/KoBERT",
     license="Apache-2.0",
     author="Heewon Jeon",
