@@ -15,14 +15,11 @@
 
 import os
 from zipfile import ZipFile
-
 import torch
-
 from transformers import BertModel
 import gluonnlp as nlp
 
-from kobert.utils import download as _download
-from kobert.utils import tokenizer
+from kobert.utils import download as _download, get_tokenizer
 
 
 def get_pytorch_kobert_model(ctx="cpu", cachedir=".cache"):
@@ -52,10 +49,7 @@ def get_pytorch_kobert_model(ctx="cpu", cachedir=".cache"):
     zipf.extractall(path=os.path.expanduser(cachedir))
     model_path = os.path.join(os.path.expanduser(cachedir), "kobert_from_pretrained")
     # download vocab
-    vocab_info = tokenizer
-    vocab_path = _download(
-        vocab_info["url"], vocab_info["fname"], vocab_info["chksum"], cachedir=cachedir
-    )
+    vocab_path = get_tokenizer()
     return get_kobert_model(model_path, vocab_path, ctx)
 
 
