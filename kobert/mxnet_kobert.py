@@ -103,7 +103,7 @@ def get_mxnet_kobert_model(
 
 if __name__ == "__main__":
     import mxnet as mx
-    from kobert.mxnet_kobert import get_mxnet_kobert_model
+    from kobert import get_mxnet_kobert_model
 
     input_id = mx.nd.array([[31, 51, 99], [15, 5, 0]])
     input_mask = mx.nd.array([[1, 1, 1], [1, 1, 0]])

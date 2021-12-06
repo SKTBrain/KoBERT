@@ -55,7 +55,7 @@ def get_pytorch_kobert_model(ctx="cpu", cachedir=".cache"):
 
 if __name__ == "__main__":
     import torch
-    from kobert.pytorch_kobert import get_pytorch_kobert_model
+    from kobert import get_pytorch_kobert_model
 
     input_ids = torch.LongTensor([[31, 51, 99], [15, 5, 0]])
     input_mask = torch.LongTensor([[1, 1, 1], [1, 1, 0]])
