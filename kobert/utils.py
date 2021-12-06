@@ -18,12 +18,6 @@ import sys
 import requests
 import hashlib
 
-tokenizer = {
-    "url": "https://kobert.blob.core.windows.net/models/kobert/tokenizer/kobert_news_wiki_ko_cased-ae5711deb3.spiece",
-    "fname": "kobert_news_wiki_ko_cased-1087f8699e.spiece",
-    "chksum": "ae5711deb3",
-}
-
 
 def download(url, filename, chksum, cachedir=".cache"):
     f_cachedir = os.path.expanduser(cachedir)
@@ -48,7 +42,9 @@ def download(url, filename, chksum, cachedir=".cache"):
                 downloaded += len(data)
                 f.write(data)
                 done = int(50 * downloaded / total)
-                sys.stdout.write("\r{}[{}{}]".format(file_path, "█" * done, "." * (50 - done)))
+                sys.stdout.write(
+                    "\r{}[{}{}]".format(file_path, "█" * done, "." * (50 - done))
+                )
                 sys.stdout.flush()
     sys.stdout.write("\n")
     assert (
@@ -59,6 +55,12 @@ def download(url, filename, chksum, cachedir=".cache"):
 
 def get_tokenizer(cachedir=".cache"):
     """Get KoBERT Tokenizer file path after downloading"""
+    tokenizer = {
+        "url": "https://kobert.blob.core.windows.net/models/kobert/tokenizer/kobert_news_wiki_ko_cased-ae5711deb3.spiece",
+        "fname": "kobert_news_wiki_ko_cased-1087f8699e.spiece",
+        "chksum": "ae5711deb3",
+    }
+
     model_info = tokenizer
     return download(
         model_info["url"], model_info["fname"], model_info["chksum"], cachedir=cachedir
