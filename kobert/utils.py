@@ -18,12 +18,6 @@ import sys
 import requests
 import hashlib
 
-onnx_kobert = {
-    "url": "https://kobert.blob.core.windows.net/models/kobert/onnx/onnx_kobert_44529811f0.onnx",
-    "fname": "onnx_kobert_44529811f0.onnx",
-    "chksum": "44529811f0",
-}
-
 tokenizer = {
     "url": "https://kobert.blob.core.windows.net/models/kobert/tokenizer/kobert_news_wiki_ko_cased-ae5711deb3.spiece",
     "fname": "kobert_news_wiki_ko_cased-1087f8699e.spiece",
@@ -61,14 +55,6 @@ def download(url, filename, chksum, cachedir=".cache"):
         chksum == hashlib.md5(open(file_path, "rb").read()).hexdigest()[:10]
     ), "corrupted file!"
     return file_path
-
-
-def get_onnx(cachedir=".cache"):
-    """Get KoBERT ONNX file path after downloading"""
-    model_info = onnx_kobert
-    return download(
-        model_info["url"], model_info["fname"], model_info["chksum"], cachedir=cachedir
-    )
 
 
 def get_tokenizer(cachedir=".cache"):
