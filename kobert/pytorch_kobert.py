@@ -24,14 +24,24 @@ import gluonnlp as nlp
 from kobert.utils import download as _download
 from kobert.utils import tokenizer
 
-pytorch_kobert = {
-    "url": "https://kobert.blob.core.windows.net/models/kobert/pytorch/kobert_v1.zip",
-    "fname": "kobert_v1.zip",
-    "chksum": "411b242919",  # 411b2429199bc04558576acdcac6d498
-}
-
 
 def get_pytorch_kobert_model(ctx="cpu", cachedir=".cache"):
+    def get_kobert_model(model_path, vocab_file, ctx="cpu"):
+        bertmodel = BertModel.from_pretrained(model_path, return_dict=False)
+        device = torch.device(ctx)
+        bertmodel.to(device)
+        bertmodel.eval()
+        vocab_b_obj = nlp.vocab.BERTVocab.from_sentencepiece(
+            vocab_file, padding_token="[PAD]"
+        )
+        return bertmodel, vocab_b_obj
+
+    pytorch_kobert = {
+        "url": "https://kobert.blob.core.windows.net/models/kobert/pytorch/kobert_v1.zip",
+        "fname": "kobert_v1.zip",
+        "chksum": "411b242919",  # 411b2429199bc04558576acdcac6d498
+    }
+
     # download model
     model_info = pytorch_kobert
     model_down = _download(
@@ -47,17 +57,6 @@ def get_pytorch_kobert_model(ctx="cpu", cachedir=".cache"):
         vocab_info["url"], vocab_info["fname"], vocab_info["chksum"], cachedir=cachedir
     )
     return get_kobert_model(model_path, vocab_path, ctx)
-
-
-def get_kobert_model(model_path, vocab_file, ctx="cpu"):
-    bertmodel = BertModel.from_pretrained(model_path, return_dict=False)
-    device = torch.device(ctx)
-    bertmodel.to(device)
-    bertmodel.eval()
-    vocab_b_obj = nlp.vocab.BERTVocab.from_sentencepiece(
-        vocab_file, padding_token="[PAD]"
-    )
-    return bertmodel, vocab_b_obj
 
 
 if __name__ == "__main__":
