@@ -19,7 +19,7 @@ import torch
 from transformers import BertModel
 import gluonnlp as nlp
 
-from kobert.utils import download as _download, get_tokenizer
+from kobert.utils.utils import download, get_tokenizer
 
 
 def get_pytorch_kobert_model(ctx="cpu", cachedir=".cache"):
@@ -34,19 +34,18 @@ def get_pytorch_kobert_model(ctx="cpu", cachedir=".cache"):
         return bertmodel, vocab_b_obj
 
     pytorch_kobert = {
-        "url": "https://kobert.blob.core.windows.net/models/kobert/pytorch/kobert_v1.zip",
-        "fname": "kobert_v1.zip",
+        "url": "s3://skt-lsl-nlp-model/KoBERT/models/kobert_v1.zip",
         "chksum": "411b242919",  # 411b2429199bc04558576acdcac6d498
     }
 
     # download model
     model_info = pytorch_kobert
-    model_down = _download(
-        model_info["url"], model_info["fname"], model_info["chksum"], cachedir=cachedir
+    model_path, is_cached = download(
+        model_info["url"], model_info["chksum"], cachedir=cachedir
     )
-
-    zipf = ZipFile(os.path.expanduser(model_down))
-    zipf.extractall(path=os.path.expanduser(cachedir))
+    cachedir_full = os.path.expanduser(cachedir)
+    zipf = ZipFile(os.path.expanduser(model_path))
+    zipf.extractall(path=cachedir_full)
     model_path = os.path.join(os.path.expanduser(cachedir), "kobert_from_pretrained")
     # download vocab
     vocab_path = get_tokenizer()
