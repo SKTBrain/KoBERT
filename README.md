@@ -14,7 +14,7 @@
   * [Subtasks](#subtasks)
     * [Naver Sentiment Analysis](#naver-sentiment-analysis)
     * [KoBERT와 CRF로 만든 한국어 객체명인식기](#kobert와-crf로-만든-한국어-객체명인식기)
-  * [Version History](#version-history)
+  * [Release](#release)
   * [Contacts](#contacts)
   * [License](#license)
 
@@ -214,10 +214,18 @@ decoding_ner_sentence: [CLS] <SKTBrain:ORG>에서 <KoBERT:POH> 모델을 공개�
 
 ---
 
-## Version History
+## Release
 
-* v.0.1 : 초기 모델 릴리즈
-* v.0.1.1 : 사전(vocabulary)과 토크나이저 통합
+* v0.2
+  * download large files from `aws s3`
+  * rename functions
+* v0.1.2
+  * Guaranteed compatibility with higher versions of transformers
+  * fix pad token index id
+* v0.1.1
+  * 사전(vocabulary)과 토크나이저 통합
+* v0.1
+  * 초기 모델 릴리즈
 
 ## Contacts
 
