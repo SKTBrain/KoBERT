@@ -10,7 +10,7 @@ def install_requires():
 
 setup(
     name="kobert",
-    version="0.1.2",
+    version="0.2",
     url="https://github.com/SKTBrain/KoBERT",
     license="Apache-2.0",
     author="Heewon Jeon",
