@@ -1,3 +1,4 @@
+boto3
 gluonnlp >= 0.6.0
 mxnet >= 1.4.0
 onnxruntime == 0.3.0

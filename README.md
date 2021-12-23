@@ -94,7 +94,7 @@ predefined_args = {
 
 ```python
 >>> import torch
->>> from kobert.pytorch_kobert import get_pytorch_kobert_model
+>>> from kobert import get_pytorch_kobert_model
 >>> input_ids = torch.LongTensor([[31, 51, 99], [15, 5, 0]])
 >>> input_mask = torch.LongTensor([[1, 1, 1], [1, 1, 0]])
 >>> token_type_ids = torch.LongTensor([[0, 0, 1], [0, 1, 0]])
@@ -123,8 +123,8 @@ tensor([[-0.2461,  0.2428,  0.2590,  ..., -0.4861, -0.0731,  0.0756],
 ```python
 >>> import onnxruntime
 >>> import numpy as np
->>> from kobert.utils import get_onnx
->>> onnx_path = get_onnx()
+>>> from kobert import get_onnx_kobert_model
+>>> onnx_path = get_onnx_kobert_model()
 >>> sess = onnxruntime.InferenceSession(onnx_path)
 >>> input_ids = [[31, 51, 99], [15, 5, 0]]
 >>> input_mask = [[1, 1, 1], [1, 1, 0]]
@@ -150,7 +150,7 @@ _ONNX 컨버팅은 [soeque1](https://github.com/soeque1)께서 도움을 주셨�
 
 ```python
 >>> import mxnet as mx
->>> from kobert.mxnet_kobert import get_mxnet_kobert_model
+>>> from kobert import get_mxnet_kobert_model
 >>> input_id = mx.nd.array([[31, 51, 99], [15, 5, 0]])
 >>> input_mask = mx.nd.array([[1, 1, 1], [1, 1, 0]])
 >>> token_type_ids = mx.nd.array([[0, 0, 1], [0, 1, 0]])
@@ -180,7 +180,7 @@ Vocab(size=8002, unk="[UNK]", reserved="['[MASK]', '[SEP]', '[CLS]']")
 
 ```python
 >>> from gluonnlp.data import SentencepieceTokenizer
->>> from kobert.utils import get_tokenizer
+>>> from kobert import get_tokenizer
 >>> tok_path = get_tokenizer()
 >>> sp  = SentencepieceTokenizer(tok_path)
 >>> sp('한국어 모델을 공유합니다.')
@@ -225,4 +225,4 @@ decoding_ner_sentence: [CLS] <SKTBrain:ORG>에서 <KoBERT:POH> 모델을 공개�
 
 ## License
 
-`KoBERT`는 Apache-2.0 라이선스 하에 공개되어 있습니다. 모델 및 코드를 사용할 경우 라이선스 내용을 준수해주세요. 라이선스 전문은 `LICENSE` 파일에서 확인하실 수 있습니다.
+`KoBERT`는 `Apache-2.0` 라이선스 하에 공개되어 있습니다. 모델 및 코드를 사용할 경우 라이선스 내용을 준수해주세요. 라이선스 전문은 `LICENSE` 파일에서 확인하실 수 있습니다.

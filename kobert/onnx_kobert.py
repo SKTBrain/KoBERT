@@ -13,21 +13,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from kobert.utils import download as _download
+from kobert.utils.utils import download
 
 
 def get_onnx_kobert_model(cachedir=".cache"):
     """Get KoBERT ONNX file path after downloading"""
     onnx_kobert = {
-        "url": "https://kobert.blob.core.windows.net/models/kobert/onnx/onnx_kobert_44529811f0.onnx",
-        "fname": "onnx_kobert_44529811f0.onnx",
+        "url": "s3://skt-lsl-nlp-model/KoBERT/models/onnx_kobert_44529811f0.onnx",
         "chksum": "44529811f0",
     }
 
     model_info = onnx_kobert
-    return _download(
-        model_info["url"], model_info["fname"], model_info["chksum"], cachedir=cachedir
+    model_path, is_cached = download(
+        model_info["url"], model_info["chksum"], cachedir=cachedir
     )
+    return model_path
 
 
 if __name__ == "__main__":
