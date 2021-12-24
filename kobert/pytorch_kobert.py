@@ -19,7 +19,7 @@ import torch
 from transformers import BertModel
 import gluonnlp as nlp
 
-from kobert.utils.utils import download, get_tokenizer
+from kobert.utils import download, get_tokenizer
 
 
 def get_pytorch_kobert_model(ctx="cpu", cachedir=".cache"):
@@ -46,7 +46,8 @@ def get_pytorch_kobert_model(ctx="cpu", cachedir=".cache"):
     cachedir_full = os.path.expanduser(cachedir)
     zipf = ZipFile(os.path.expanduser(model_path))
     zipf.extractall(path=cachedir_full)
-    model_path = os.path.join(os.path.expanduser(cachedir), "kobert_from_pretrained")
+    model_path = os.path.join(os.path.expanduser(
+        cachedir), "kobert_from_pretrained")
     # download vocab
     vocab_path = get_tokenizer()
     return get_kobert_model(model_path, vocab_path, ctx)
@@ -60,7 +61,8 @@ if __name__ == "__main__":
     input_mask = torch.LongTensor([[1, 1, 1], [1, 1, 0]])
     token_type_ids = torch.LongTensor([[0, 0, 1], [0, 1, 0]])
     model, vocab = get_pytorch_kobert_model()
-    sequence_output, pooled_output = model(input_ids, input_mask, token_type_ids)
+    sequence_output, pooled_output = model(
+        input_ids, input_mask, token_type_ids)
     print(pooled_output.shape)
     print(vocab)
     print(sequence_output[0])

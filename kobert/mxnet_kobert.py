@@ -17,8 +17,8 @@ import gluonnlp as nlp
 import mxnet as mx
 from gluonnlp.model import BERTEncoder, BERTModel
 
-from kobert.utils.utils import download
-from kobert.utils.utils import get_tokenizer
+from kobert.utils import download
+from kobert.utils import get_tokenizer
 
 
 def get_mxnet_kobert_model(
@@ -107,7 +107,8 @@ if __name__ == "__main__":
     input_id = mx.nd.array([[31, 51, 99], [15, 5, 0]])
     input_mask = mx.nd.array([[1, 1, 1], [1, 1, 0]])
     token_type_ids = mx.nd.array([[0, 0, 1], [0, 1, 0]])
-    model, vocab = get_mxnet_kobert_model(use_decoder=False, use_classifier=False)
+    model, vocab = get_mxnet_kobert_model(
+        use_decoder=False, use_classifier=False)
     encoder_layer, pooled_output = model(input_id, token_type_ids)
     print(pooled_output.shape)
     print(vocab)

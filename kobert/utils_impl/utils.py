@@ -16,7 +16,7 @@
 import hashlib
 import os
 
-from kobert.utils.aws_s3_downloader import AwsS3Downloader
+from kobert.utils_impl.aws_s3_downloader import AwsS3Downloader
 
 
 def download(url, chksum=None, cachedir=".cache"):
@@ -33,7 +33,8 @@ def download(url, chksum=None, cachedir=".cache"):
     file_path = s3.download(url, cachedir_full)
     if chksum:
         assert (
-            chksum == hashlib.md5(open(file_path, "rb").read()).hexdigest()[:10]
+            chksum == hashlib.md5(
+                open(file_path, "rb").read()).hexdigest()[:10]
         ), "corrupted file!"
     return file_path, False
 
@@ -46,5 +47,6 @@ def get_tokenizer(cachedir=".cache"):
     }
 
     model_info = tokenizer
-    model_path, is_cached = download(model_info["url"], model_info["chksum"], cachedir=cachedir)
+    model_path, is_cached = download(
+        model_info["url"], model_info["chksum"], cachedir=cachedir)
     return model_path
