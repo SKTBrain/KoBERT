@@ -216,6 +216,8 @@ decoding_ner_sentence: [CLS] <SKTBrain:ORG>에서 <KoBERT:POH> 모델을 공개�
 
 ## Release
 
+* v0.2.1
+  * guide default 'import statements'
 * v0.2
   * download large files from `aws s3`
   * rename functions
