@@ -17,8 +17,7 @@ import gluonnlp as nlp
 import mxnet as mx
 from gluonnlp.model import BERTEncoder, BERTModel
 
-from kobert.utils.utils import download
-from kobert.utils.utils import get_tokenizer
+from kobert import download, get_tokenizer
 
 
 def get_mxnet_kobert_model(

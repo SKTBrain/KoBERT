@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from kobert.utils.utils import download
+from kobert import download
 
 
 def get_onnx_kobert_model(cachedir=".cache"):
