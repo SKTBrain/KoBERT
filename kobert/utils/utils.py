@@ -25,7 +25,7 @@ def download(url, chksum=None, cachedir=".cache"):
     filename = os.path.basename(url)
     file_path = os.path.join(cachedir_full, filename)
     if os.path.isfile(file_path):
-        if hashlib.md5(open(file_path, "rb").read()).hexdigest()[:10] == chksum:
+        if hashlib.md5(open(file_path, "rb").read()).hexdigest()[:10] == chksum[:10]:
             print(f"using cached model. {file_path}")
             return file_path, True
 
@@ -33,7 +33,7 @@ def download(url, chksum=None, cachedir=".cache"):
     file_path = s3.download(url, cachedir_full)
     if chksum:
         assert (
-            chksum == hashlib.md5(open(file_path, "rb").read()).hexdigest()[:10]
+            chksum[:10] == hashlib.md5(open(file_path, "rb").read()).hexdigest()[:10]
         ), "corrupted file!"
     return file_path, False
 

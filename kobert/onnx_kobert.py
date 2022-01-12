@@ -19,8 +19,8 @@ from kobert import download
 def get_onnx_kobert_model(cachedir=".cache"):
     """Get KoBERT ONNX file path after downloading"""
     onnx_kobert = {
-        "url": "s3://skt-lsl-nlp-model/KoBERT/models/onnx_kobert_44529811f0.onnx",
-        "chksum": "44529811f0",
+        "url": "s3://skt-lsl-nlp-model/KoBERT/models/kobert.onnx1.8.0.onnx",
+        "chksum": "6f6610f2e3b61da6de8dbce",
     }
 
     model_info = onnx_kobert
@@ -30,24 +30,33 @@ def get_onnx_kobert_model(cachedir=".cache"):
     return model_path
 
 
+def make_dummy_input(max_seq_len):
+    def do_pad(x, max_seq_len, pad_id):
+        return [_x + [pad_id] * (max_seq_len - len(_x)) for _x in x]
+
+    input_ids = do_pad([[31, 51, 99], [15, 5]], max_seq_len, pad_id=1)
+    token_type_ids = do_pad([[0, 0, 0], [0, 0]], max_seq_len, pad_id=0)
+    input_mask = do_pad([[1, 1, 1], [1, 1]], max_seq_len, pad_id=0)
+    position_ids = list(range(max_seq_len))
+    return (input_ids, token_type_ids, input_mask, position_ids)
+
+
 if __name__ == "__main__":
     import onnxruntime
     import numpy as np
     from kobert import get_onnx_kobert_model
 
     onnx_path = get_onnx_kobert_model()
+    dummy_input = make_dummy_input(max_seq_len=512)
+    so = onnxruntime.SessionOptions()
     sess = onnxruntime.InferenceSession(onnx_path)
-    input_ids = [[31, 51, 99], [15, 5, 0]]
-    input_mask = [[1, 1, 1], [1, 1, 0]]
-    token_type_ids = [[0, 0, 1], [0, 1, 0]]
-    len_seq = len(input_ids[0])
-    pred_onnx = sess.run(
+    outputs = sess.run(
         None,
         {
-            "input_ids": np.array(input_ids),
-            "token_type_ids": np.array(token_type_ids),
-            "input_mask": np.array(input_mask),
-            "position_ids": np.array(range(len_seq)),
+            "input_ids": np.array(dummy_input[0]),
+            "token_type_ids": np.array(dummy_input[1]),
+            "input_mask": np.array(dummy_input[2]),
+            "position_ids": np.array(dummy_input[3]),
         },
     )
-    print(pred_onnx[-2][0])
+    print(outputs[-2][0])

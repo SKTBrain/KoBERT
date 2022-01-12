@@ -1,7 +1,7 @@
 boto3
 gluonnlp >= 0.6.0
 mxnet >= 1.4.0
-onnxruntime == 0.3.0
+onnxruntime == 1.8.0
 sentencepiece >= 0.1.6
 torch >= 1.7.0
 transformers >= 4.8.1

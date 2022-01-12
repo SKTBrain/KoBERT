@@ -216,6 +216,8 @@ decoding_ner_sentence: [CLS] <SKTBrain:ORG>에서 <KoBERT:POH> 모델을 공개�
 
 ## Release
 
+* v0.2.3
+  * support `onnx 1.8.0`
 * v0.2.2
   * fix `No module named 'kobert.utils'`
 * v0.2.1
