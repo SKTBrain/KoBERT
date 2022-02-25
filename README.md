@@ -14,6 +14,7 @@
   * [Subtasks](#subtasks)
     * [Naver Sentiment Analysis](#naver-sentiment-analysis)
     * [KoBERT와 CRF로 만든 한국어 객체명인식기](#kobert와-crf로-만든-한국어-객체명인식기)
+    * [Korean Sentence BERT](#korean-sentence-bert)
   * [Release](#release)
   * [Contacts](#contacts)
   * [License](#license)
@@ -212,6 +213,15 @@ len: 40, pred_ner_tag:['[CLS]', 'B-ORG', 'I-ORG', 'I-ORG', 'I-ORG', 'I-ORG', 'O'
 decoding_ner_sentence: [CLS] <SKTBrain:ORG>에서 <KoBERT:POH> 모델을 공개해준 덕분에 <BERT-CRF:POH> 기반 객체명인식기를 쉽게 개발할 수 있었다.[SEP]
 ```
 
+### Korean Sentence BERT
+
+* <https://github.com/BM-K/KoSentenceBERT-SKT>
+
+|Model|Cosine Pearson|Cosine Spearman|Euclidean Pearson|Euclidean Spearman|Manhattan Pearson|Manhattan Spearman|Dot Pearson|Dot Spearman|
+|:------------------------:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
+|NLl|65.05|68.48|68.81|68.18|68.90|68.20|65.22|66.81|
+|STS|**80.42**|**79.64**|**77.93**|77.43|**77.92**|77.44|**76.56**|**75.83**|
+|STS + NLI|78.81|78.47|77.68|**77.78**|77.71|**77.83**|75.75|75.22|
 ---
 
 ## Release
