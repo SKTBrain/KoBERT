@@ -89,7 +89,7 @@ predefined_args = {
 
 ## How to use
 
-### Using with PyTorch
+### PyTorch
 
 *Huggingface transformers API가 편하신 분은 [여기](kobert_hf)를 참고하세요.*
 
@@ -119,7 +119,7 @@ tensor([[-0.2461,  0.2428,  0.2590,  ..., -0.4861, -0.0731,  0.0756],
   * Colab에서 [런타임] - [런타임 유형 변경] - 하드웨어 가속기(GPU) 사용을 권장합니다.
   * [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SKTBrain/KoBERT/blob/master/scripts/NSMC/naver_review_classifications_pytorch_kobert.ipynb)
 
-### Using with ONNX
+### ONNX
 
 ```python
 >>> import onnxruntime
@@ -147,7 +147,7 @@ array([[-0.24610452,  0.24282141,  0.25895312, ..., -0.48613444,
 
 _ONNX 컨버팅은 [soeque1](https://github.com/soeque1)께서 도움을 주셨습니다._
 
-### Using with MXNet-Gluon
+### MXNet-Gluon
 
 ```python
 >>> import mxnet as mx
@@ -190,7 +190,7 @@ Vocab(size=8002, unk="[UNK]", reserved="['[MASK]', '[SEP]', '[CLS]']")
 
 ---
 
-## Subtasks
+## Task Fine-tuning
 
 ### Naver Sentiment Analysis
 
