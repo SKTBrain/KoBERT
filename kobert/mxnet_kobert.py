@@ -17,7 +17,7 @@ import gluonnlp as nlp
 import mxnet as mx
 from gluonnlp.model import BERTEncoder, BERTModel
 
-from kobert import download, get_tokenizer
+from kobert import download, get_tokenizer_path
 
 
 def get_mxnet_kobert_model(
@@ -83,7 +83,7 @@ def get_mxnet_kobert_model(
         return (net, vocab_b_obj)
 
     mxnet_kobert = {
-        "url": "s3://skt-lsl-nlp-model/KoBERT/models/mxnet_kobert_45b6957552.params",
+        "url": "https://huggingface.co/skt/kobert-base-v1/resolve/main/legacy/mxnet_kobert_45b6957552.params",
         "chksum": "45b6957552",
     }
 
@@ -93,7 +93,7 @@ def get_mxnet_kobert_model(
         model_info["url"], model_info["chksum"], cachedir=cachedir
     )
     # download vocab
-    vocab_path = get_tokenizer()
+    vocab_path = get_tokenizer_path()
     return get_kobert_model(
         model_path, vocab_path, use_pooler, use_decoder, use_classifier, ctx
     )

@@ -19,7 +19,7 @@ from kobert import download
 def get_onnx_kobert_model(cachedir=".cache"):
     """Get KoBERT ONNX file path after downloading"""
     onnx_kobert = {
-        "url": "s3://skt-lsl-nlp-model/KoBERT/models/kobert.onnx1.8.0.onnx",
+        "url": "https://huggingface.co/skt/kobert-base-v1/resolve/main/legacy/kobert.onnx1.8.0.onnx",
         "chksum": "6f6610f2e3b61da6de8dbce",
     }
 

@@ -1,1 +1,1 @@
-from kobert.utils.utils import download, get_tokenizer
+from kobert.utils.utils import download, get_tokenizer_path

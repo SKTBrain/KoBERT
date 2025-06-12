@@ -1,5 +1,5 @@
 # coding=utf-8
-# Copyright 2019 SK T-Brain Authors.
+# Copyright 2019-2025 SKTelecom
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,8 +15,7 @@
 
 import hashlib
 import os
-
-from kobert.utils.aws_s3_downloader import AwsS3Downloader
+import urllib.request
 
 
 def download(url, chksum=None, cachedir=".cache"):
@@ -29,8 +28,13 @@ def download(url, chksum=None, cachedir=".cache"):
             print(f"using cached model. {file_path}")
             return file_path, True
 
-    s3 = AwsS3Downloader()
-    file_path = s3.download(url, cachedir_full)
+    print(f"downloading model from {url}...")
+    try:
+        urllib.request.urlretrieve(url, file_path)
+    except Exception as e:
+        print(f"download failed: {e}")
+        return None, False
+
     if chksum:
         assert (
             chksum[:10] == hashlib.md5(open(file_path, "rb").read()).hexdigest()[:10]
@@ -38,13 +42,13 @@ def download(url, chksum=None, cachedir=".cache"):
     return file_path, False
 
 
-def get_tokenizer(cachedir=".cache"):
+def get_tokenizer_path(cachedir=".cache"):
     """Get KoBERT Tokenizer file path after downloading"""
     tokenizer = {
-        "url": "s3://skt-lsl-nlp-model/KoBERT/tokenizers/kobert_news_wiki_ko_cased-1087f8699e.spiece",
+        "url": "https://huggingface.co/skt/kobert-base-v1/resolve/main/legacy/kobert_news_wiki_ko_cased-1087f8699e.spiece",
         "chksum": "ae5711deb3",
     }
 
     model_info = tokenizer
-    model_path, is_cached = download(model_info["url"], model_info["chksum"], cachedir=cachedir)
+    model_path, _ = download(model_info["url"], model_info["chksum"], cachedir=cachedir)
     return model_path
