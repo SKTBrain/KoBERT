@@ -181,8 +181,8 @@ Vocab(size=8002, unk="[UNK]", reserved="['[MASK]', '[SEP]', '[CLS]']")
 
 ```python
 >>> from gluonnlp.data import SentencepieceTokenizer
->>> from kobert import get_tokenizer
->>> tok_path = get_tokenizer()
+>>> from kobert import get_tokenizer_path
+>>> tok_path = get_tokenizer_path()
 >>> sp  = SentencepieceTokenizer(tok_path)
 >>> sp('한국어 모델을 공유합니다.')
 ['▁한국', '어', '▁모델', '을', '▁공유', '합니다', '.']
@@ -226,18 +226,20 @@ decoding_ner_sentence: [CLS] <SKTBrain:ORG>에서 <KoBERT:POH> 모델을 공개�
 
 ## Release
 
+* v0.2.4
+  * 대용량 파일을 Hugging Face Hub에서 받도록 변경
 * v0.2.3
-  * support `onnx 1.8.0`
+  * `onnx 1.8.0` 지원
 * v0.2.2
-  * fix `No module named 'kobert.utils'`
+  * 에러 수정: `No module named 'kobert.utils'`
 * v0.2.1
-  * guide default 'import statements'
+  * import 구문 수정
 * v0.2
-  * download large files from `aws s3`
-  * rename functions
+  * 대용량 파일을 `aws s3`에서 받도록 변경
+  * 함수명 변경
 * v0.1.2
-  * Guaranteed compatibility with higher versions of transformers
-  * fix pad token index id
+  * transformers 라이브러리 호환성 수정
+  * pad token의 index 수정
 * v0.1.1
   * 사전(vocabulary)과 토크나이저 통합
 * v0.1
